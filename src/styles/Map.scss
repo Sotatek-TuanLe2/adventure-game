@@ -1,0 +1,16 @@
+.map-container {
+  position: relative;
+  height: 100%;
+
+  &__background-image {
+    width: fit-content;
+    height: 100%;
+  }
+
+  &__path-button {
+    position: absolute;
+    padding: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+}
