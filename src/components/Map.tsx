@@ -6,6 +6,12 @@ const Map: React.FC<IMapProps> = (props) => {
 
   const _handleGoTo = (goTo: number) => () => onGoTo(goTo);
 
+  if (!map) {
+    return (
+      <div className="map-container"></div>
+    );
+  }
+
   return (
     <div className="map-container">
       <img 

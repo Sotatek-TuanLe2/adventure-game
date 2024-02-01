@@ -110,14 +110,67 @@
     "backgroundUrl": "./assets/images/level_7_1.jpg",
     "hitZones": [
       {
-        "x": "13%",
+        "x": "18%",
         "y": "65%",
-        "goTo": 4
+        "goTo": 5
       },
       {
-        "x": "46%",
+        "x": "81%",
         "y": "65%",
-        "goTo": 6.1
+        "goTo": 5
+      }
+    ]
+  },
+  {
+    "id": 6.2,
+    "backgroundUrl": "./assets/images/level_7_2.jpg",
+    "hitZones": [
+      {
+        "x": "27%",
+        "y": "65%",
+        "goTo": 5
+      },
+      {
+        "x": "62%",
+        "y": "65%",
+        "goTo": 7
+      },
+      {
+        "x": "80%",
+        "y": "65%",
+        "goTo": 8
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "backgroundUrl": "./assets/images/level_8.jpg",
+    "hitZones": [
+      {
+        "x": "7%",
+        "y": "65%",
+        "goTo": 8
+      },
+      {
+        "x": "43%",
+        "y": "70%",
+        "goTo": 6.2
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "backgroundUrl": "./assets/images/level_9.jpg",
+    "hitZones": [
+      {
+        "x": "28%",
+        "y": "50%",
+        "goTo": 6.2
+      },
+      {
+        "x": "47%",
+        "y": "55%",
+        "goTo": 7
       }
     ]
   }

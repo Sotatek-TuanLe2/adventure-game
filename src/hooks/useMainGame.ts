@@ -5,7 +5,7 @@ import { ENavigatorType } from "../utils/constants";
 
 type HookReturnType = {
   level: number;
-  map: IMap;
+  map: IMap | null;
   onNavigateToLeft: () => void;
   onNavigateToRight: () => void;
   onStop: () => void;
@@ -15,8 +15,8 @@ type HookReturnType = {
 const OFFSET_PERCENTAGE = 1;
 
 const useMainGame = ():HookReturnType => {
-  const [level, setLevel] = useState<number>(5);
-  const [map, setMap] = useState<IMap>(maps[level]);
+  const [level, setLevel] = useState<number>(1);
+  const [map, setMap] = useState<IMap | null>(null);
 
   const interval = useRef<ReturnType<typeof setInterval>>();
   const marginLeft = useRef<number>(0);
@@ -36,6 +36,9 @@ const useMainGame = ():HookReturnType => {
   }, [level]);
   
   useEffect(() => {
+    if (!map) {
+      return;
+    }
     _resetImagePosition();
   }, [map])
 

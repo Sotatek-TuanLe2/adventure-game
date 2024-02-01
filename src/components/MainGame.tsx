@@ -6,8 +6,7 @@ import Navigator from "./Navigator";
 
 const MainGame: React.FC = () => {
   const { 
-    level, 
-    map, 
+    map,
     onNavigateToLeft,
     onNavigateToRight,
     onStop,
