@@ -1,0 +1,124 @@
+[
+  {
+    "id": 0,
+    "backgroundUrl": "./assets/images/level_1.jpg",
+    "hitZones": [
+      {
+        "x": "22%",
+        "y": "50%",
+        "goTo": 1
+      },
+      {
+        "x": "50%",
+        "y": "55%",
+        "goTo": 0
+      },
+      {
+        "x": "85%",
+        "y": "52%",
+        "goTo": 0
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "backgroundUrl": "./assets/images/level_2.jpg",
+    "hitZones": [
+      {
+        "x": "26%",
+        "y": "50%",
+        "goTo": 2
+      },
+      {
+        "x": "66%",
+        "y": "85%",
+        "goTo": 0
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "backgroundUrl": "./assets/images/level_3.jpg",
+    "hitZones": [
+      {
+        "x": "14%",
+        "y": "50%",
+        "goTo": 3
+      },
+      {
+        "x": "74%",
+        "y": "76%",
+        "goTo": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "backgroundUrl": "./assets/images/level_4.jpg",
+    "hitZones": [
+      {
+        "x": "23%",
+        "y": "45%",
+        "goTo": 4
+      },
+      {
+        "x": "72%",
+        "y": "55%",
+        "goTo": 2
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "backgroundUrl": "./assets/images/level_5.jpg",
+    "hitZones": [
+      {
+        "x": "17%",
+        "y": "45%",
+        "goTo": 5
+      },
+      {
+        "x": "70%",
+        "y": "55%",
+        "goTo": 3
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "backgroundUrl": "./assets/images/level_6.jpg",
+    "hitZones": [
+      {
+        "x": "13%",
+        "y": "65%",
+        "goTo": 4
+      },
+      {
+        "x": "46%",
+        "y": "65%",
+        "goTo": 6.1
+      },
+      {
+        "x": "75%",
+        "y": "55%",
+        "goTo": 6.2
+      }
+    ]
+  },
+  {
+    "id": 6.1,
+    "backgroundUrl": "./assets/images/level_7_1.jpg",
+    "hitZones": [
+      {
+        "x": "13%",
+        "y": "65%",
+        "goTo": 4
+      },
+      {
+        "x": "46%",
+        "y": "65%",
+        "goTo": 6.1
+      }
+    ]
+  }
+]
