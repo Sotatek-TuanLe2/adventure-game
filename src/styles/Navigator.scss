@@ -1,0 +1,16 @@
+.navigator {
+  position: fixed;
+  top: 50%;
+  z-index: 1;
+  padding: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+
+  &--left {
+    left: 0;
+  }
+
+  &--right {
+    right: 0;
+  }
+}
