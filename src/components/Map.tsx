@@ -1,6 +1,7 @@
 import { IMapProps } from "../utils/models";
 import "styles/Map.scss";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Map: React.FC<IMapProps> = (props) => {
   const { map, onGoTo, resetImagePosition } = props;
@@ -24,6 +25,11 @@ const Map: React.FC<IMapProps> = (props) => {
   const _handleMapReady = () => setMapReady(true);
 
   const _handleGoTo = (goTo: number) => () => {
+    if (goTo === map?.id) {
+      toast.warning("This route is blocked!");
+      return;
+    }
+
     setMapReady(false);
     onGoTo(goTo);
   };
@@ -34,6 +40,7 @@ const Map: React.FC<IMapProps> = (props) => {
   }
 
   const _renderGoToButtons = () => {
+    console.log("mapReady", mapReady);
     if (!mapReady) {
       return null;
     }

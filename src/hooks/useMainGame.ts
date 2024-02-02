@@ -103,14 +103,7 @@ const useMainGame = ():HookReturnType => {
 
   const onNavigateToRight = () => onHold(_onRight);
 
-  const onGoTo = (goTo: number) => {
-    if (goTo === map?.id) {
-      toast.warning("This route is blocked!");
-      return;
-    }
-
-    _onChangeMap(goTo);
-  };
+  const onGoTo = (goTo: number) => _onChangeMap(goTo);
 
   const resetImagePosition = () => {
     const img = document.getElementsByClassName("map-container__background-image") as HTMLCollectionOf<HTMLElement>;
