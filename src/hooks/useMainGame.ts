@@ -5,14 +5,12 @@ import { ENavigatorType } from "../utils/constants";
 import { toast } from "react-toastify";
 
 type HookReturnType = {
-  level: number;
   map: IMap | null;
-  mapReady: boolean;
   onNavigateToLeft: () => void;
   onNavigateToRight: () => void;
   onStop: () => void;
   onGoTo: (goTo: number) => void;
-  onChangeMapReady: () => void;
+  resetImagePosition: () => void;
 }
 
 const INTERVAL_ON_HOLD = 50;
@@ -20,12 +18,23 @@ const OFFSET_PERCENTAGE = 1;
 const MAX_LEVEL = 8;
 
 const useMainGame = ():HookReturnType => {
-  const [level, setLevel] = useState<number>(0);
   const [map, setMap] = useState<IMap | null>(null);
-  const [mapReady, setMapReady] = useState<boolean>(false);
 
   const interval = useRef<ReturnType<typeof setInterval>>();
   const marginLeft = useRef<number>(0);
+
+  const _onChangeMap = (goTo: number) => {
+    const newMap = maps.find(item => item.id === goTo);
+    if (!newMap) {
+      return;
+    }
+    setMap(newMap);
+  };
+
+  useEffect(() => {
+    const FIRST_LEVEL = 0;
+    _onChangeMap(FIRST_LEVEL);
+  }, []);
 
   const _congratulations = (level: number) => {
     if (level !== MAX_LEVEL) {
@@ -34,29 +43,14 @@ const useMainGame = ():HookReturnType => {
 
     toast.success("You've reached to the top! Congratulations!");
   };
-
-  useEffect(() => {
-    const newMap = maps.find(item => item.id === level);
-    if (!newMap) {
-      return;
-    }
-    setMap(newMap);
-    _congratulations(level);
-  }, [level]);
   
   useEffect(() => {
     if (!map) {
       return;
     }
 
-    setMapReady(false);
+    _congratulations(map.id)
   }, [map]);
-
-  useEffect(() => {
-    if (!!map && mapReady) {
-      resetImagePosition();
-    }
-  }, [mapReady]);
 
   const onHold = (fn: () => void) => {
     interval.current = setInterval(fn, INTERVAL_ON_HOLD);
@@ -110,12 +104,12 @@ const useMainGame = ():HookReturnType => {
   const onNavigateToRight = () => onHold(_onRight);
 
   const onGoTo = (goTo: number) => {
-    if (goTo === level) {
+    if (goTo === map?.id) {
       toast.warning("This route is blocked!");
       return;
     }
 
-    setLevel(goTo);
+    _onChangeMap(goTo);
   };
 
   const resetImagePosition = () => {
@@ -124,17 +118,13 @@ const useMainGame = ():HookReturnType => {
     img[0].style.marginLeft = `${marginLeft.current}%`;
   };
 
-  const onChangeMapReady = () => setMapReady(true);
-
   return {
-    level,
     map,
-    mapReady,
     onNavigateToLeft,
     onNavigateToRight,
     onStop,
     onGoTo,
-    onChangeMapReady,
+    resetImagePosition,
   };
 };
 

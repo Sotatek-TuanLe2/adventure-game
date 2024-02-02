@@ -7,12 +7,11 @@ import Navigator from "./Navigator";
 const MainGame: React.FC = () => {
   const { 
     map,
-    mapReady,
     onNavigateToLeft,
     onNavigateToRight,
     onStop,
     onGoTo,
-    onChangeMapReady,
+    resetImagePosition,
   } = useMainGame();
 
   return (
@@ -25,9 +24,8 @@ const MainGame: React.FC = () => {
       />
       <Map
         map={map}
-        mapReady={mapReady}
         onGoTo={onGoTo}
-        onChangeMapReady={onChangeMapReady}
+        resetImagePosition={resetImagePosition}
       />
       <Navigator
         type={ENavigatorType.Right}
