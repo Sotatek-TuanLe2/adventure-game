@@ -14,6 +14,11 @@ const Map: React.FC<IMapProps> = (props) => {
     );
   }
 
+  const _generateGoToButtonClass = (xAxis: string) => {
+    const xAxisNumber = +xAxis.slice(0, xAxis.length - 1);
+    return `map-container__path-button ${xAxisNumber > 50 ? "map-container__path-button--right" : ""}`;
+  }
+
   const _renderGoToButtons = () => {
     if (!mapReady) {
       return null;
@@ -22,14 +27,14 @@ const Map: React.FC<IMapProps> = (props) => {
     return map.hitZones.map((zone, index) => (
       <button
         key={`${map.id}-${index}`}
-        className="map-container__path-button"
+        className={_generateGoToButtonClass(zone.x)}
         style={{
           top: zone.y,
           left: zone.x,
         }}
         onClick={_handleGoTo(zone.goTo)}
       >
-        Go
+        <img src="./assets/icons/WalkIcon.png" alt="Walk icon" />
       </button>
     ))
   };

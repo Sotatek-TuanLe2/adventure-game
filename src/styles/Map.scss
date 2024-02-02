@@ -9,8 +9,14 @@
 
   &__path-button {
     position: absolute;
-    padding: 20px;
+    padding: 10px;
     border-radius: 50px;
+    background-color: rgba(255,255,255,0.3);
+    border: none;
     cursor: pointer;
+
+    &--right {
+      transform: scaleX(-1);
+    }
   }
 }

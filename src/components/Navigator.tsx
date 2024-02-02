@@ -7,7 +7,6 @@ const Navigator: React.FC<INavigatorProps> = (props) => {
 
   const isLeft = type === ENavigatorType.Left;
   const className = `navigator navigator--${isLeft ? "left" : "right"}`;
-  const content = isLeft ? "LEFT" : "RIGHT";
 
   return (
     <button
@@ -16,7 +15,7 @@ const Navigator: React.FC<INavigatorProps> = (props) => {
       onPointerUp={onMouseUp}
       onPointerLeave={onMouseLeave}
     >
-      {content}
+      <img src="./assets/icons/EyesIcon.png" alt="Eye icon" />
     </button>
   );
 };
