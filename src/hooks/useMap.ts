@@ -10,11 +10,13 @@ const useMap = (map: IMap | null):HookReturnType => {
   const [mapReady, setMapReady] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log("map.id", map?.id);
+    console.log("map", map)
     if (!map) {
       return;
     }
     setMapReady(false);
-  }, [map?.id]);
+  }, [map]);
 
   const onChangeMapReady = () => setMapReady(true);
 

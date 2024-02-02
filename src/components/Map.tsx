@@ -8,10 +8,11 @@ const Map: React.FC<IMapProps> = (props) => {
   const { mapReady, onChangeMapReady } = useMap(map);
 
   useEffect(() => {
-    if (mapReady) {
+    console.log("___________map", map, mapReady);
+    if (map && mapReady) {
       resetImagePosition();
     }
-  }, [mapReady]);
+  }, [map, mapReady]);
 
   if (!map) {
     return (
