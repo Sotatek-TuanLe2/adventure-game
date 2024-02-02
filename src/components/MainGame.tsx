@@ -11,6 +11,7 @@ const MainGame: React.FC = () => {
     onNavigateToRight,
     onStop,
     onGoTo,
+    resetImagePosition,
   } = useMainGame();
 
   return (
@@ -24,6 +25,7 @@ const MainGame: React.FC = () => {
       <Map
         map={map}
         onGoTo={onGoTo}
+        resetImagePosition={resetImagePosition}
       />
       <Navigator
         type={ENavigatorType.Right}

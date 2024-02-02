@@ -11,6 +11,7 @@ type HookReturnType = {
   onNavigateToRight: () => void;
   onStop: () => void;
   onGoTo: (goTo: number) => void;
+  resetImagePosition: () => void;
 }
 
 const INTERVAL_ON_HOLD = 50;
@@ -23,12 +24,6 @@ const useMainGame = ():HookReturnType => {
 
   const interval = useRef<ReturnType<typeof setInterval>>();
   const marginLeft = useRef<number>(0);
-
-  const _resetImagePosition = () => {
-    const img = document.getElementsByClassName("map-container__background-image") as HTMLCollectionOf<HTMLElement>;
-    marginLeft.current = 0;
-    img[0].style.marginLeft = `${marginLeft.current}%`;
-  };
 
   const _congratulations = (level: number) => {
     if (level !== MAX_LEVEL) {
@@ -51,7 +46,6 @@ const useMainGame = ():HookReturnType => {
     if (!map) {
       return;
     }
-    _resetImagePosition();
   }, [map])
 
   const onHold = (fn: () => void) => {
@@ -114,6 +108,12 @@ const useMainGame = ():HookReturnType => {
     setLevel(goTo);
   };
 
+  const resetImagePosition = () => {
+    const img = document.getElementsByClassName("map-container__background-image") as HTMLCollectionOf<HTMLElement>;
+    marginLeft.current = 0;
+    img[0].style.marginLeft = `${marginLeft.current}%`;
+  };
+
   return {
     level,
     map,
@@ -121,6 +121,7 @@ const useMainGame = ():HookReturnType => {
     onNavigateToRight,
     onStop,
     onGoTo,
+    resetImagePosition,
   };
 };
 

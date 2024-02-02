@@ -1,18 +1,25 @@
 import { IMapProps } from "../utils/models";
 import "styles/Map.scss";
 import useMap from "hooks/useMap";
+import { useEffect } from "react";
 
 const Map: React.FC<IMapProps> = (props) => {
-  const { map, onGoTo } = props;
+  const { map, onGoTo, resetImagePosition } = props;
   const { mapReady, onChangeMapReady } = useMap(map);
 
-  const _handleGoTo = (goTo: number) => () => onGoTo(goTo);
+  useEffect(() => {
+    if (mapReady) {
+      resetImagePosition();
+    }
+  }, [mapReady]);
 
   if (!map) {
     return (
       <div className="map-container"></div>
     );
   }
+
+  const _handleGoTo = (goTo: number) => () => onGoTo(goTo);
 
   const _generateGoToButtonClass = (xAxis: string) => {
     const xAxisNumber = +xAxis.slice(0, xAxis.length - 1);
