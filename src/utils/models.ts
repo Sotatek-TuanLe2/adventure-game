@@ -21,6 +21,7 @@ export interface INavigatorProps {
 
 export interface IMapProps {
   map: IMap | null;
+  mapReady: boolean;
   onGoTo: (goTo: number) => void;
-  resetImagePosition: () => void;
+  onChangeMapReady: () => void;
 }

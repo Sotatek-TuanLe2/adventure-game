@@ -1,17 +1,8 @@
 import { IMapProps } from "../utils/models";
 import "styles/Map.scss";
-import useMap from "hooks/useMap";
-import { useEffect } from "react";
 
 const Map: React.FC<IMapProps> = (props) => {
-  const { map, onGoTo, resetImagePosition } = props;
-  const { mapReady, onChangeMapReady } = useMap(map);
-
-  useEffect(() => {
-    if (mapReady) {
-      resetImagePosition();
-    }
-  }, [mapReady]);
+  const { map, mapReady, onGoTo, onChangeMapReady } = props;
 
   if (!map) {
     return (
