@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import maps from "../mockData/maps.json";
 import { IMap } from "../utils/models";
 import { ENavigatorType } from "../utils/constants";
+import { toast } from "react-toastify";
 
 type HookReturnType = {
   level: number;
@@ -12,10 +13,12 @@ type HookReturnType = {
   onGoTo: (goTo: number) => void;
 }
 
+const INTERVAL_ON_HOLD = 50;
 const OFFSET_PERCENTAGE = 1;
+const MAX_LEVEL = 8;
 
 const useMainGame = ():HookReturnType => {
-  const [level, setLevel] = useState<number>(1);
+  const [level, setLevel] = useState<number>(0);
   const [map, setMap] = useState<IMap | null>(null);
 
   const interval = useRef<ReturnType<typeof setInterval>>();
@@ -27,12 +30,21 @@ const useMainGame = ():HookReturnType => {
     img[0].style.marginLeft = `${marginLeft.current}%`;
   };
 
+  const _congratulations = (level: number) => {
+    if (level !== MAX_LEVEL) {
+      return;
+    }
+
+    toast.success("You've reached to the top! Congratulations!");
+  };
+
   useEffect(() => {
     const newMap = maps.find(item => item.id === level);
     if (!newMap) {
       return;
     }
     setMap(newMap);
+    _congratulations(level);
   }, [level]);
   
   useEffect(() => {
@@ -43,7 +55,7 @@ const useMainGame = ():HookReturnType => {
   }, [map])
 
   const onHold = (fn: () => void) => {
-    interval.current = setInterval(fn, 75);
+    interval.current = setInterval(fn, INTERVAL_ON_HOLD);
   };
 
   const onStop = () => {
@@ -95,7 +107,7 @@ const useMainGame = ():HookReturnType => {
 
   const onGoTo = (goTo: number) => {
     if (goTo === level) {
-      alert("This route is blocked!");
+      toast.warning("This route is blocked!");
       return;
     }
 
