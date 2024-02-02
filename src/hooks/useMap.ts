@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import { IMap } from "utils/models";
 
-type HookArgumentType = {
-  map: IMap | null;
-}
-
 type HookReturnType = {
   mapReady: boolean;
   onChangeMapReady: () => void;
 }
 
-const useMap = ({...args}: HookArgumentType):HookReturnType => {
-  const { map } = args;
+const useMap = (map: IMap | null):HookReturnType => {
   const [mapReady, setMapReady] = useState<boolean>(false);
 
   useEffect(() => {

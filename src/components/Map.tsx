@@ -4,7 +4,7 @@ import useMap from "hooks/useMap";
 
 const Map: React.FC<IMapProps> = (props) => {
   const { map, onGoTo } = props;
-  const { mapReady, onChangeMapReady } = useMap({ map });
+  const { mapReady, onChangeMapReady } = useMap(map);
 
   const _handleGoTo = (goTo: number) => () => onGoTo(goTo);
 
