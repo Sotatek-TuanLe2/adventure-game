@@ -5,18 +5,16 @@ import { ENavigatorType } from "../utils/constants";
 const Navigator: React.FC<INavigatorProps> = (props) => {
   const { type, onMouseDown, onMouseUp, onMouseLeave } = props;
 
-  const className = `navigator navigator--${type === ENavigatorType.Left ? "left" : "right"}`;
-  const content = type === ENavigatorType.Left ? "LEFT" : "RIGHT";
+  const isLeft = type === ENavigatorType.Left;
+  const className = `navigator navigator--${isLeft ? "left" : "right"}`;
+  const content = isLeft ? "LEFT" : "RIGHT";
 
   return (
     <button
       className={className}
-      onMouseDown={onMouseDown}
-      // onPointerDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      // onPointerUp={onMouseUp}
-      onMouseLeave={onMouseLeave}
-      // onPointerLeave={onMouseLeave}
+      onPointerDown={onMouseDown}
+      onPointerUp={onMouseUp}
+      onPointerLeave={onMouseLeave}
     >
       {content}
     </button>
