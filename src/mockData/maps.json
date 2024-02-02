@@ -4,7 +4,7 @@
     "backgroundUrl": "./assets/images/level_1.jpg",
     "hitZones": [
       {
-        "x": "22%",
+        "x": "21%",
         "y": "50%",
         "goTo": 1
       },
